@@ -56,4 +56,9 @@ class AuthController extends Controller
             'data' => 'Logout success'
         ]);
     }
+
+    public function me(Request $request)
+    {
+        return $request->user();
+    }
 }

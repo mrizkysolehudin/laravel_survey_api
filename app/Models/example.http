@@ -28,14 +28,14 @@ Accept: application/json
 ### Logout User API
 POST http://localhost:8000/api/users/logout
 Accept: application/json
-Authorization: Bearer 17|XptQoeykb5jwkjMlytQrZB169GOmFzCSOPKPl1ddf419df6b
+Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 
 
 
-### Get Current User API
-GET http://localhost:8000/api/users/current
+### Get Current User (Me) API
+GET http://localhost:8000/api/users/me
 Accept: application/json
-Authorization: 129d9400-1adb-456a-a914-f4055b28a9d6
+Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 
 
 
