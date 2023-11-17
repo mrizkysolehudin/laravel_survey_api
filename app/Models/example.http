@@ -1,12 +1,12 @@
 ### Register User API
-POST http://localhost:8000/api/signup
+POST http://localhost:8000/api/users/signup
 Content-Type: application/json
 Accept: application/json
 
 {
     "name": "randi",
     "email" : "randi2@gmail.com",
-     "password": "MEssi12_"
+    "password": "MEssi12_"
     "password_confirmation": "MEssi12_"
 }
 
@@ -19,8 +19,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "username": "messi",
-    "password": "121212"
+    "email" : "messi@gmail.com",
+    "password": "MEssi12_"
 }
 
 
