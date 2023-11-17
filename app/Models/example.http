@@ -25,6 +25,13 @@ Accept: application/json
 
 
 
+### Logout User API
+POST http://localhost:8000/api/users/logout
+Accept: application/json
+Authorization: Bearer 17|XptQoeykb5jwkjMlytQrZB169GOmFzCSOPKPl1ddf419df6b
+
+
+
 ### Get Current User API
 GET http://localhost:8000/api/users/current
 Accept: application/json
@@ -43,10 +50,7 @@ Authorization: 129d9400-1adb-456a-a914-f4055b28a9d6
 }
 
 
-### Logout User API
-DELETE http://localhost:8000/api/users/logout
-Accept: application/json
-Authorization: 129d9400-1adb-456a-a914-f4055b28a9d6
+
 
 
 
