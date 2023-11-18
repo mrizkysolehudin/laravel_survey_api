@@ -72,9 +72,13 @@ class SurveyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Survey $survey, Request $request)
     {
-        //
+        $user = $request->user();
+        if ($user->id !== $survey->user_id) {
+            return abort(403, 'Unauthorized action');
+        }
+        return new SurveyResource($survey);
     }
 
     /**

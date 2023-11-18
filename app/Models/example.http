@@ -19,7 +19,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "email" : "messi@gmail.com",
+    "email" : "alex@gmail.com",
     "password": "MEssi12_"
 }
 
@@ -35,7 +35,7 @@ Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 ### Get Current User (Me) API
 GET http://localhost:8000/api/users/me
 Accept: application/json
-Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+Authorization: Bearer 20|FguzZmIVoYMrQIg1j6ziavx48ihi1bDAzenK7cUFd5709844
 
 
 
@@ -61,9 +61,15 @@ Accept: application/json
 Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 
 
+### Get Survey API #249
+GET http://localhost:8000/api/survey/4
+Accept: application/json
+Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+
+
+
 
 ### Create Contact API 
-
 POST http://localhost:8000/api/contacts
 Content-Type: application/json
 Accept: application/json
