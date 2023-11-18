@@ -6,7 +6,7 @@ Accept: application/json
 {
     "name": "randi",
     "email" : "randi2@gmail.com",
-    "password": "MEssi12_"
+    "password": "MEssi12_",
     "password_confirmation": "MEssi12_"
 }
 
@@ -39,22 +39,24 @@ Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 
 
 
-### Update Current User API
-PATCH http://localhost:8000/api/users/current
+### Create Survey API
+POST http://localhost:8000/api/survey
 Content-Type: application/json
 Accept: application/json
-Authorization: 129d9400-1adb-456a-a914-f4055b28a9d6
+Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 
 {
-    "name" : "messo"
+  "title": "Lorem Ipsum",
+  "description": "Deskripsi Survey",
+  "expire_date": "",
+  "status": true,
+  "questions": []
 }
 
 
 
+### Create Contact API 
 
-
-
-### Create Contact API
 POST http://localhost:8000/api/contacts
 Content-Type: application/json
 Accept: application/json
