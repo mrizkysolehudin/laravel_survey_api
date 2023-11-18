@@ -127,6 +127,14 @@ Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 }
 
 
+### Delete Survey API #249
+DELETE http://localhost:8000/api/survey/9
+Accept: application/json
+Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+
+
+
+
 
 
 ### Create Contact API 
@@ -141,6 +149,9 @@ Authorization: 129d9400-1adb-456a-a914-f4055b28a9d6
     "email" : "anjar@gmail.com",
     "phone" : "08197643565756"
 }
+
+
+
 
 
 

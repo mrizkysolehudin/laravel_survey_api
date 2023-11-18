@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\File;
 
 class SurveyController extends Controller
 {
@@ -150,8 +151,22 @@ class SurveyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Survey $survey, Request $request)
     {
-        //
+        $user = $request->user();
+        if ($user->id !== $survey->user_id) {
+            return abort(403, 'Unauthorized action.');
+        }
+
+        $survey->delete();
+
+        // If there is an old image, delete it
+        if ($survey->image) {
+            $absolutePath = public_path($survey->image);
+            File::delete($absolutePath);
+        }
+
+        return response()->json(['data' => 'Delete success'])->setStatusCode(200);
     }
+
 }
