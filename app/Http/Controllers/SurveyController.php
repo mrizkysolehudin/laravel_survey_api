@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Enums\QuestionTypeEnum;
 use App\Http\Requests\SurveyStoreRequest;
+use App\Http\Requests\SurveyUpdateRequest;
 use App\Http\Resources\SurveyResource;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\Support\Arr;
 
 class SurveyController extends Controller
 {
@@ -30,6 +32,22 @@ class SurveyController extends Controller
         ]);
 
         return SurveyQuestion::create($validator->validated());
+    }
+
+    private function updateQuestion(SurveyQuestion $question, $data)
+    {
+        if (is_array($data['data'])) {
+            $data['data'] = json_encode($data['data']);
+        }
+        $validator = Validator::make($data, [
+            'id' => 'exists:App\Models\SurveyQuestion,id',
+            'question' => 'required|string',
+            'type' => ['required', new Enum(QuestionTypeEnum::class)],
+            'description' => 'nullable|string',
+            'data' => 'present',
+        ]);
+
+        return $question->update($validator->validated());
     }
 
 
@@ -84,9 +102,49 @@ class SurveyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SurveyUpdateRequest $request, Survey $survey)
     {
-        //
+        $data = $request->validated();
+
+        if (isset($data['image'])) {
+            $relativePath = $this->saveImage($data['image']);
+            $data['image'] = $relativePath;
+
+            // If there is an old image, delete it
+            if ($survey->image) {
+                $absolutePath = public_path($survey->image);
+                File::delete($absolutePath);
+            }
+        }
+
+        $survey->update($data);
+
+        $existingIds = $survey->questions()->pluck('id')->toArray();
+        $newIds = Arr::pluck($data['questions'], 'id');
+        // Find questions to delete
+        $toDelete = array_diff($existingIds, $newIds);
+        //Find questions to add
+        $toAdd = array_diff($newIds, $existingIds);
+
+        SurveyQuestion::destroy($toDelete);
+
+        // Create new questions
+        foreach ($data['questions'] as $question) {
+            if (in_array($question['id'], $toAdd)) {
+                $question['survey_id'] = $survey->id;
+                $this->createQuestion($question);
+            }
+        }
+
+        // Update existing questions
+        $questionMap = collect($data['questions'])->keyBy('id');
+        foreach ($survey->questions as $question) {
+            if (isset($questionMap[$question->id])) {
+                $this->updateQuestion($question, $questionMap[$question->id]);
+            }
+        }
+
+        return new SurveyResource($survey);
     }
 
     /**
