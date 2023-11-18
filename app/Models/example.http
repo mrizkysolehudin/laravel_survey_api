@@ -133,6 +133,10 @@ Accept: application/json
 Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 
 
+### Get Survey API #249
+GET http://localhost:8000/api/survey/get-by-slug/lorem-ipsum-2
+Accept: application/json
+Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 
 
 

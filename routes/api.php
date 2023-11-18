@@ -20,8 +20,10 @@ Route::middleware('auth:sanctum')->group(function () {
   Route::post('/users/logout', [AuthController::class, 'logout']);
   Route::get('/users/me', [AuthController::class, 'me']);
   Route::apiResource('survey', SurveyController::class);
-  
+
 });
 
 Route::post('/users/signup', [AuthController::class, 'signup']);
 Route::post('/users/login', [AuthController::class, 'login']);
+
+Route::get('/survey/get-by-slug/{survey:slug}', [SurveyController::class, 'getBySlug']);
