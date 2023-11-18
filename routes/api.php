@@ -28,3 +28,4 @@ Route::post('/users/login', [AuthController::class, 'login']);
 
 Route::get('/survey/get-by-slug/{survey:slug}', [SurveyController::class, 'getBySlug']);
 Route::get('/survey/get-by-title/{survey:title}', [SurveyController::class, 'getBySlug']);
+Route::post('/survey/{survey}/answer', [SurveyController::class, 'storeAnswer']);
