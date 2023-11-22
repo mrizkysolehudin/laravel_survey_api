@@ -45,13 +45,9 @@
 
 <script setup>
 import PageWrapperComponent from '../components/PageWrapperComponent.vue'
-import SurveyListItem from '../components/SurveyListItem.vue'
 
 const surveys = {
   loading: false,
   data: []
 }
-function deleteSurvey() {}
-
-function getForPage() {}
 </script>
