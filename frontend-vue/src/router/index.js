@@ -1,16 +1,16 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/LoginView.vue'
-import RegisterView from '../views/RegisterView.vue'
-import AboutView from '../views/AboutView.vue'
-import SurveysView from '../views/SurveysView.vue'
-import SurveyDetailsView from '../views/SurveyDetailsView.vue'
-import SurveyCreateView from '../views/SurveyCreateView.vue'
-import SurveysBySlugView from '../views/SurveysBySlugView.vue'
-import ProfileView from '../views/ProfileView.vue'
-import NotFound from '../views/NotFound.vue'
-import DefaultLayout from '../components/DefaultLayout.vue'
-import AuthLayout from '../components/AuthLayout.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import LoginView from '../views/LoginView.vue';
+import RegisterView from '../views/RegisterView.vue';
+import AboutView from '../views/AboutView.vue';
+import SurveysView from '../views/SurveysView.vue';
+import SurveyDetailsView from '../views/SurveyDetailsView.vue';
+import SurveyCreateView from '../views/SurveyCreateView.vue';
+import SurveysBySlugView from '../views/SurveysBySlugView.vue';
+import ProfileView from '../views/ProfileView.vue';
+import NotFound from '../views/NotFound.vue';
+import DefaultLayout from '../components/DefaultLayout.vue';
+import AuthLayout from '../components/AuthLayout.vue';
 
 const routes = [
   {
@@ -35,8 +35,8 @@ const routes = [
         component: SurveysView
       },
       {
-        path: '/surveys/id',
-        name: 'surveys',
+        path: '/surveys/:id',
+        name: 'surveyDetail',
         component: SurveyDetailsView
       },
       {
@@ -83,11 +83,11 @@ const routes = [
     path: '/:catchAll(.*)',
     redirect: '/404'
   }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes
-})
+});
 
-export default router
+export default router;
