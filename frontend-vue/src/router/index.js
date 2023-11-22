@@ -4,8 +4,11 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import AboutView from '../views/AboutView.vue'
 import SurveysView from '../views/SurveysView.vue'
+import SurveyDetailsView from '../views/SurveyDetailsView.vue'
 import SurveyCreateView from '../views/SurveyCreateView.vue'
+import SurveysBySlugView from '../views/SurveysBySlugView.vue'
 import ProfileView from '../views/ProfileView.vue'
+import NotFound from '../views/NotFound.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
 import AuthLayout from '../components/AuthLayout.vue'
 
@@ -30,6 +33,11 @@ const routes = [
         path: '/surveys',
         name: 'surveys',
         component: SurveysView
+      },
+      {
+        path: '/surveys/id',
+        name: 'surveys',
+        component: SurveyDetailsView
       },
       {
         path: '/surveys/create',
@@ -58,8 +66,22 @@ const routes = [
         path: '/about',
         name: 'about',
         component: AboutView
+      },
+      {
+        path: '/surveys/slug',
+        name: 'surveys',
+        component: SurveysBySlugView
       }
     ]
+  },
+  {
+    path: '/404',
+    name: 'notFound',
+    component: NotFound
+  },
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/404'
   }
 ]
 
