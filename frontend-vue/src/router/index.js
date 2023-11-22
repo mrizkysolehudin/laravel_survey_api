@@ -27,11 +27,7 @@ const routes = [
         name: 'register',
         component: RegisterView
       },
-      {
-        path: '/surveys',
-        name: 'surveys',
-        component: SurveysView
-      },
+
       {
         path: '/surveys/:id',
         name: 'surveyDetail',
@@ -56,7 +52,11 @@ const routes = [
         name: 'home',
         component: HomeView
       },
-
+      {
+        path: '/surveys',
+        name: 'surveys',
+        component: SurveysView
+      },
       {
         path: '/surveys/slug',
         name: 'surveysBySlug',
