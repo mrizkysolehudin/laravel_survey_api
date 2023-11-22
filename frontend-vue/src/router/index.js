@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import AboutView from '../views/AboutView.vue'
+import SurveysView from '../views/SurveysView.vue'
+import SurveyCreateView from '../views/SurveyCreateView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
 import AuthLayout from '../components/AuthLayout.vue'
@@ -23,6 +25,16 @@ const routes = [
         path: '/register',
         name: 'register',
         component: RegisterView
+      },
+      {
+        path: '/surveys',
+        name: 'surveys',
+        component: SurveysView
+      },
+      {
+        path: '/surveys/create',
+        name: 'surveyCreate',
+        component: SurveyCreateView
       },
       {
         path: '/profile',

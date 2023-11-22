@@ -1,5 +1,5 @@
 <template>
-  <PageComponent title="Dashboard">
+  <PageWrapperComponent>
     <div v-if="loading" class="flex justify-center">Loading...</div>
     <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-gray-700">
       <div
@@ -115,10 +115,12 @@
         </div>
       </div>
     </div>
-  </PageComponent>
+  </PageWrapperComponent>
 </template>
 
 <script setup>
+import PageWrapperComponent from '../components/PageWrapperComponent.vue'
+
 const loading = false
 </script>
 
