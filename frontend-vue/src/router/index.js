@@ -2,12 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import RegisterView from '../views/RegisterView.vue';
-import AboutView from '../views/AboutView.vue';
 import SurveysView from '../views/SurveysView.vue';
 import SurveyDetailsView from '../views/SurveyDetailsView.vue';
 import SurveyCreateView from '../views/SurveyCreateView.vue';
 import SurveysBySlugView from '../views/SurveysBySlugView.vue';
-import ProfileView from '../views/ProfileView.vue';
 import NotFound from '../views/NotFound.vue';
 import DefaultLayout from '../components/DefaultLayout.vue';
 import AuthLayout from '../components/AuthLayout.vue';
@@ -44,11 +42,7 @@ const routes = [
         name: 'surveyCreate',
         component: SurveyCreateView
       },
-      {
-        path: '/profile',
-        name: 'profile',
-        component: ProfileView
-      }
+
     ]
   },
   {
@@ -62,14 +56,10 @@ const routes = [
         name: 'home',
         component: HomeView
       },
-      {
-        path: '/about',
-        name: 'about',
-        component: AboutView
-      },
+
       {
         path: '/surveys/slug',
-        name: 'surveys',
+        name: 'surveysBySlug',
         component: SurveysBySlugView
       }
     ]
