@@ -64,6 +64,21 @@ const store = createStore({
           commit('setHomeLoading', false);
           return error;
         });
+    },
+    getSurveysAction({ commit }, { url = null } = {}) {
+      commit('setSurveysLoading', true);
+      url = url || '/survey';
+      return axiosClient.get(url).then((res) => {
+        commit('setSurveysLoading', false);
+        commit('setSurveys', res.data);
+        return res;
+      });
+    },
+    deleteSurveyAction({ dispatch }, id) {
+      return axiosClient.delete(`/survey/${id}`).then((res) => {
+        dispatch('getSurveysAction');
+        return res;
+      });
     }
   },
   mutations: {
@@ -84,6 +99,13 @@ const store = createStore({
     },
     setHomeData: (state, data) => {
       state.home.data = data;
+    },
+    setSurveysLoading: (state, loading) => {
+      state.surveys.loading = loading;
+    },
+    setSurveys: (state, surveys) => {
+      state.surveys.data = surveys.data;
+      state.surveys.links = surveys.meta.links;
     }
   },
   modules: {}
