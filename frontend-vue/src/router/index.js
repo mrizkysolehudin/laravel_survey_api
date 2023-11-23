@@ -9,6 +9,7 @@ import SurveysBySlugView from '../views/SurveysBySlugView.vue';
 import NotFound from '../views/NotFound.vue';
 import DefaultLayout from '../components/DefaultLayout.vue';
 import AuthLayout from '../components/AuthLayout.vue';
+import store from '../store';
 
 const routes = [
   {
@@ -27,7 +28,6 @@ const routes = [
         name: 'register',
         component: RegisterView
       },
-
       {
         path: '/surveys/:id',
         name: 'surveyDetail',
@@ -44,18 +44,28 @@ const routes = [
   {
     path: '/',
     redirect: '/home',
-    name: 'Guest',
+    name: 'Main',
     component: DefaultLayout,
+    beforeEnter: (to, from, next) => {
+      const hasToken = store.getters['hasToken'];
+
+      if (!hasToken) {
+        next({ name: 'login' });
+      } else {
+        next();
+      }
+    },
     children: [
       {
         path: '/home',
         name: 'home',
-        component: HomeView
+        component: HomeView,
+
       },
       {
         path: '/surveys',
         name: 'surveys',
-        component: SurveysView
+        component: SurveysView,
       },
       {
         path: '/surveys/slug',

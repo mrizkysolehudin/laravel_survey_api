@@ -27,7 +27,11 @@ const store = createStore({
       message: ''
     }
   },
-  getters: {},
+  getters: {
+    hasToken: (state) => {
+      return state.user.token !== null;
+    },
+  },
   actions: {
     registerAction({ commit }, user) {
       return axiosClient.post('/users/signup', user).then(({ data }) => {
@@ -41,6 +45,12 @@ const store = createStore({
         commit('setUser', data.user);
         commit('setToken', data.token);
         return data;
+      });
+    },
+    logoutAction({ commit }) {
+      return axiosClient.post('/users/logout').then((response) => {
+        commit('setLogout');
+        return response;
       });
     },
     getHomeDataAction({ commit }) {
@@ -63,6 +73,11 @@ const store = createStore({
     setToken: (state, token) => {
       state.user.token = token;
       localStorage.setItem('token', token);
+    },
+    setLogout: (state) => {
+      state.user.token = null;
+      state.user.data = {};
+      localStorage.removeItem('token');
     },
     setHomeLoading: (state, loading) => {
       state.home.loading = loading;

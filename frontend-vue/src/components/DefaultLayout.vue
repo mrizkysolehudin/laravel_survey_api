@@ -9,25 +9,25 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <router-link to="/" active-class="bg-gray-900 text-white" :class="[
-                  !isActiveLink ? '' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'px-3 py-2 rounded-md text-sm font-medium'
-                ]">Home
+                <router-link :to="{ name: 'home' }"
+                  active-class="bg-gray-900 text-white hover:bg-gray-700 hover:text-white"
+                  class="text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                  Home
                 </router-link>
-                <router-link :to="{ name: 'surveys' }" active-class="bg-gray-900 text-white" :class="[
-                  !isActiveLink ? '' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'px-3 py-2 rounded-md text-sm font-medium'
-                ]">Surveys
+                <router-link :to="{ name: 'surveys' }"
+                  active-class="bg-gray-900 text-white hover:bg-gray-700 hover:text-white"
+                  class="text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                  Surveys
                 </router-link>
-                <router-link :to="{ name: 'surveysBySlug' }" active-class="bg-gray-900 text-white" :class="[
-                  !isActiveLink ? '' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'px-3 py-2 rounded-md text-sm font-medium'
-                ]">Surveys by Slug
+                <router-link :to="{ name: 'surveysBySlug' }"
+                  active-class="bg-gray-900 text-white hover:bg-gray-700 hover:text-white"
+                  class="text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                  Surveys by Slug
                 </router-link>
-                <router-link :to="{ name: 'surveyCreate' }" active-class="bg-gray-900 text-white" :class="[
-                  !isActiveLink ? '' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'px-3 py-2 rounded-md text-sm font-medium'
-                ]">Create Survey
+                <router-link :to="{ name: 'surveyCreate' }"
+                  active-class="bg-gray-900 text-white hover:bg-gray-700 hover:text-white"
+                  class="text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                  Create Survey
                 </router-link>
               </div>
             </div>
@@ -42,10 +42,12 @@
                     <span class="sr-only">Open user menu</span>
 
                     <div class="mx-3">
-                      <div class="text-left text-base font-medium leading-none text-white">
-                        Messi
+                      <div class="text-left text-base font-medium leading-none text-white capitalize">
+                        {{ user.name }}
                       </div>
-                      <div class="text-sm font-medium leading-none text-gray-400">messi@gmail</div>
+                      <div class="text-sm font-medium leading-none text-gray-400">
+                        {{ user.email }}
+                      </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                       stroke="white">
@@ -61,7 +63,8 @@
                   <MenuItems
                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <MenuItem v-slot="{}">
-                    <a :class="['block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Sign out</a>
+                    <a @click="handleLogout" :class="['block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Sign
+                      out</a>
                     </MenuItem>
                   </MenuItems>
                 </transition>
@@ -82,7 +85,7 @@
 
       <DisclosurePanel class="md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <router-link to="/" active-class="bg-gray-900 text-white" :class="[
+          <router-link :to="{ name: 'home' }" active-class="bg-gray-900 text-white" :class="[
             !isActiveLink ? '' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
             'block px-3 py-2 rounded-md text-base font-medium'
           ]">Home
@@ -128,7 +131,27 @@ import {
   MenuItems
 } from '@headlessui/vue';
 import { MenuIcon, XIcon } from '@heroicons/vue/outline';
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const router = useRouter();
+
+const user = computed(() => store.state.user.data);
+
 
 const isActiveLink = true;
-const logout = () => { };
+const handleLogout = () => {
+  store.dispatch('logoutAction').then(() => {
+    router.push({
+      name: 'login'
+    });
+  });
+};
+
+store.dispatch('getUser');
+
+
+
 </script>

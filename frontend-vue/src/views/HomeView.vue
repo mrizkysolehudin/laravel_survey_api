@@ -1,7 +1,7 @@
 <template>
   <PageWrapperComponent title="Home">
     <div v-if="loading" class="flex justify-center min-h-screen">Loading...</div>
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-gray-700 pb-12">
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-gray-700">
       <div class="bg-white shadow-md p-3 text-center flex flex-col animate-fade-in-down order-1 lg:order-2"
         style="animation-delay: 0.1s">
         <h3 class="text-2xl font-semibold">Total Surveys</h3>

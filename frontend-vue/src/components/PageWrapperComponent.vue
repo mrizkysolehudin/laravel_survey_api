@@ -5,7 +5,7 @@
       <slot name="header"></slot>
     </div>
   </header>
-  <main class="bg-[#a5f3fc]">
+  <main class="bg-[#a5f3fc] min-h-[75dvh]">
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
       <div class="px-4 sm:px-0">
         <slot></slot>
