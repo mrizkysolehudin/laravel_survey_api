@@ -16,7 +16,7 @@ const store = createStore({
       data: [],
       links: []
     },
-    surveyDetails: {
+    surveyDetail: {
       loading: false,
       data: {}
     },
@@ -53,6 +53,12 @@ const store = createStore({
         return response;
       });
     },
+    getUserAction({ commit }) {
+      return axiosClient.get('/users/me')
+        .then(res => {
+          commit("setUser", res.data);
+        });
+    },
     getHomeDataAction({ commit }) {
       commit('setHomeLoading', true);
       return axiosClient.get('/dashboard')
@@ -79,7 +85,39 @@ const store = createStore({
         dispatch('getSurveysAction');
         return res;
       });
-    }
+    },
+    getSurveyDetailAction({ commit }, id) {
+      commit("setSurveyDetailLoading", true);
+      return axiosClient.get(`/survey/${id}`)
+        .then((res) => {
+          commit("setSurveyDetail", res.data);
+          commit("setSurveyDetailLoading", false);
+          return res;
+        }).catch((error) => {
+          commit("setSurveyDetailLoading", false);
+          return error;
+        });
+    },
+    saveSurveyAction({ commit }, survey) {
+      delete survey.image_url;
+
+      let response;
+      if (survey.id) {
+        response = axiosClient.put(`/survey/${survey.id}`, survey).then((res) => {
+          commit('setSurveyDetail', res.data);
+          return res;
+        });
+      } else {
+        response = axiosClient.post('/survey', survey).then((res) => {
+          commit('setSurveyDetail', res.data);
+          return res;
+        });
+      }
+      return response;
+    },
+    showNotificationAction({ commit }, { type, message }) {
+      commit('setNotify', { type, message });
+    },
   },
   mutations: {
     setUser: (state, user) => {
@@ -106,6 +144,20 @@ const store = createStore({
     setSurveys: (state, surveys) => {
       state.surveys.data = surveys.data;
       state.surveys.links = surveys.meta.links;
+    },
+    setSurveyDetailLoading: (state, loading) => {
+      state.surveyDetail.loading = loading;
+    },
+    setSurveyDetail: (state, survey) => {
+      state.surveyDetail.data = survey.data;
+    },
+    setNotify: (state, { message, type }) => {
+      state.notification.show = true;
+      state.notification.type = type;
+      state.notification.message = message;
+      setTimeout(() => {
+        state.notification.show = false;
+      }, 3000);
     }
   },
   modules: {}

@@ -131,7 +131,7 @@ import {
   MenuItems
 } from '@headlessui/vue';
 import { MenuIcon, XIcon } from '@heroicons/vue/outline';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
@@ -150,8 +150,6 @@ const handleLogout = () => {
   });
 };
 
-store.dispatch('getUser');
-
-
+store.dispatch('getUserAction');
 
 </script>
