@@ -4,8 +4,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "randi",
-    "email" : "randi2@gmail.com",
+    "name": "ronaldo",
+    "email" : "ronaldo@gmail.com",
     "password": "MEssi12_",
     "password_confirmation": "MEssi12_"
 }
@@ -19,7 +19,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "email" : "randi@gmail.com",
+    "email" : "messi@gmail.com",
     "password": "MEssi12_"
 }
 
@@ -28,14 +28,14 @@ Accept: application/json
 ### Logout User API
 POST http://localhost:8000/api/users/logout
 Accept: application/json
-Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+Authorization: Bearer 5|5hvVMRYNMU1vRordJHNC9HQbMpGCdlPwI8HkH2Rq9692b808
 
 
 
 ### Get Current User (Me) API
 GET http://localhost:8000/api/users/me
 Accept: application/json
-Authorization: Bearer 20|FguzZmIVoYMrQIg1j6ziavx48ihi1bDAzenK7cUFd5709844
+Authorization: Bearer 5|5hvVMRYNMU1vRordJHNC9HQbMpGCdlPwI8HkH2Rq9692b808
 
 
 
@@ -43,10 +43,10 @@ Authorization: Bearer 20|FguzZmIVoYMrQIg1j6ziavx48ihi1bDAzenK7cUFd5709844
 POST http://localhost:8000/api/survey
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+Authorization: Bearer 5|5hvVMRYNMU1vRordJHNC9HQbMpGCdlPwI8HkH2Rq9692b808
 
 {
-  "title": "Lorem Ipsum",
+  "title": "Cocok nih",
   "description": "Deskripsi Survey",
   "expire_date": "",
   "status": true,
@@ -79,13 +79,13 @@ Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 ### Get Survey API #249
 GET http://localhost:8000/api/survey
 Accept: application/json
-Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+Authorization: Bearer 5|5hvVMRYNMU1vRordJHNC9HQbMpGCdlPwI8HkH2Rq9692b808
 
 
 ### Get Survey API #249
 GET http://localhost:8000/api/survey/4
 Accept: application/json
-Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+Authorization: Bearer 5|5hvVMRYNMU1vRordJHNC9HQbMpGCdlPwI8HkH2Rq9692b808
 
 
 
@@ -93,7 +93,7 @@ Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 PUT http://localhost:8000/api/survey/9
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+Authorization: Bearer 5|5hvVMRYNMU1vRordJHNC9HQbMpGCdlPwI8HkH2Rq9692b808
 
 {
   "title": "What000",
@@ -130,7 +130,7 @@ Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
 ### Delete Survey API #249
 DELETE http://localhost:8000/api/survey/9
 Accept: application/json
-Authorization: Bearer 18|Ihe3F5wRwoaaVpSWdZQpfRj7iuyKBaveDXGQPpg0c1b0224f
+Authorization: Bearer 5|5hvVMRYNMU1vRordJHNC9HQbMpGCdlPwI8HkH2Rq9692b808
 
 
 ### Get Survey by Slug API #249
@@ -146,7 +146,7 @@ Accept: application/json
 
 
 ### Create Survey Answer API 
-POST http://localhost:8000/api/survey/8/answer
+POST http://localhost:8000/api/survey/1/answer
 Content-Type: application/json
 Accept: application/json
 
@@ -160,5 +160,5 @@ Accept: application/json
 ### Get Dasboard API 
 GET http://localhost:8000/api/dashboard
 Accept: application/json
-Authorization: Bearer 22|41MT7ylM4DRgLTpx8nOh81YxNSwNojcWaxqyeikBed9a189a
+Authorization: Bearer 5|5hvVMRYNMU1vRordJHNC9HQbMpGCdlPwI8HkH2Rq9692b808
 
